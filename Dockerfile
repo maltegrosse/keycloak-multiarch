@@ -17,7 +17,7 @@ ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLO
 
 RUN apk update && apk upgrade --no-cache
 
-RUN apk add curl openjdk11-jre-headless ca-certificates musl-locales musl-locales-lang gzip openssl tar which
+RUN apk add curl openjdk11-jre-headless ca-certificates musl-locales musl-locales-lang gzip openssl tar which bash
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
