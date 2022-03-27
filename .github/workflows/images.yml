@@ -5,8 +5,6 @@ on:
   push:
     tags:
     - '*'
-    # only trigger on branches, not on tags
-    branches: '**'
 
 jobs:
   docker:
@@ -14,12 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-    #  - name: Checkout keycloak
-    #    uses: actions/checkout@v2
-    #    with:
-    #      repository: keycloak/keycloak-containers
-    #  - name: Replace Dockerfile
-    #    run: ls
       - name: Prepare
         id: prep
         run: |
