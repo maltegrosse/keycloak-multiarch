@@ -5,6 +5,8 @@ on:
   push:
     tags:
     - '*'
+    # only trigger on branches, not on tags
+    branches: '**'
 
 jobs:
   docker:
