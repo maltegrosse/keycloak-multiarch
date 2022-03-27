@@ -45,6 +45,7 @@ jobs:
           rm Dockerfile && rm README.md
           mv ./keycloak-containers/server/* ./
           # Set output parameters
+          echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
          
@@ -66,6 +67,8 @@ jobs:
 
       - name: Build
         uses: docker/build-push-action@v2
+        env:
+           KEYCLOAK_VERSION: ${{ steps.prep.outputs.version }}
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
