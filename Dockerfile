@@ -1,4 +1,4 @@
-FROM alpine:3.15.2
+FROM debian:bullseye-slim
 
 ENV KEYCLOAK_VERSION 17.0.0
 ENV JDBC_POSTGRES_VERSION 42.2.5
@@ -15,9 +15,9 @@ ARG GIT_REPO
 ARG GIT_BRANCH
 ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-legacy-$KEYCLOAK_VERSION.tar.gz
 
-RUN apk update && apk upgrade --no-cache
+RUN apt-get update -y && apt-get upgrade -y
 
-RUN apk add curl openjdk11-jre-headless ca-certificates musl-locales musl-locales-lang gzip openssl tar which bash
+RUN apt-get install -y curl openjdk-11-jdk-headless ca-certificates gzip openssl tar which bash locales 
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
