@@ -42,8 +42,9 @@ jobs:
           git clone https://github.com/keycloak/keycloak-containers.git
           rm ./keycloak-containers/server/Dockerfile
           cp Dockerfile ./keycloak-containers/server/ 
-          
-          # Set output parameters.
+          rm Dockerfile && rm README.md
+          mv ./keycloak-containers/server/* ./
+          # Set output parameters
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
          
@@ -68,7 +69,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          file: ./keycloak-containers/server/Dockerfile
+          file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/arm
           push: true
           tags: ${{ steps.prep.outputs.tags }}
