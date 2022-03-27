@@ -17,7 +17,7 @@ ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLO
 
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y curl openjdk-11-jdk-headless ca-certificates gzip openssl tar which bash locales 
+RUN apt-get install -y curl openjdk-11-jdk-headless ca-certificates gzip openssl tar which bash 
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
