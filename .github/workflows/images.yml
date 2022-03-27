@@ -40,7 +40,7 @@ jobs:
             TAGS="$TAGS,${DOCKER_IMAGE}:latest"
           fi
           git clone https://github.com/keycloak/keycloak-containers.git
-          cp Dockerfile ./keycloak-containers/server/ -i
+          yes | cp Dockerfile ./keycloak-containers/server/ -i
           
           # Set output parameters.
           echo ::set-output name=tags::${TAGS}
