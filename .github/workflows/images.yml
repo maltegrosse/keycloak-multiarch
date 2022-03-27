@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: keycloak/keycloak-containers
+      - name: Replace Dockerfile
+        run: ls
       - name: Prepare
         id: prep
         run: |
