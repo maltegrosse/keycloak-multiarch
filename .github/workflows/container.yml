@@ -20,11 +20,7 @@ jobs:
           SHORTREF=${GITHUB_SHA::8}
           TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${SHORTREF}"
 
-          git clone https://github.com/keycloak/keycloak-containers.git
-          rm ./keycloak-containers/server/Dockerfile
-          cp Dockerfile ./keycloak-containers/server/ 
-          rm Dockerfile && rm README.md
-          mv ./keycloak-containers/server/* ./
+      
           # Set output parameters
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
@@ -58,4 +54,4 @@ jobs:
           push: true
           tags: ${{ steps.prep.outputs.tags }}
           build-args:  |
-               VERSION=${{ steps.prep.outputs.version }}
+               KEYCLOAK_VERSION=${{ steps.prep.outputs.version }}
